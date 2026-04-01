@@ -1,5 +1,5 @@
 // import Chart from 'chart.js/auto';
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+import Chart from 'https://cdn.jsdelivr.net/npm/chart.js/+esm';
 const myChart = document.getElementById("sales-chart")
 
 const chartData = {
