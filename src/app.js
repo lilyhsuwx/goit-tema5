@@ -1,5 +1,5 @@
+
 // import Chart from 'chart.js/auto';
-import Chart from 'chart.js/auto';
 
 
 const ctx = document.getElementById("sales-chart")
@@ -20,6 +20,7 @@ const chartData = {
 const config = {
   type: 'line',
   data: chartData,
+  options: {}
 };
 
 const salesChart = new Chart(ctx,config);
