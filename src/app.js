@@ -1,5 +1,75 @@
 
-// import Chart from 'chart.js/auto';
+import { alert, error, success } from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+
+const keyRef = document.getElementById("key");
+const btnRef = document.querySelector(".btn");
+
+const keys = ['a', 'm', 'h', 'f', 'i', 'p', 'e', 'z', 'x', 'l'];
+
+let currentKeyIndex = 0;
+
+keyRef.textContent = keys[currentKeyIndex];
+
+document.addEventListener ("keydown", (a) => {
+  const pressedKey = a.key.toLowerCase();
+
+  if (pressedKey === keys[currentKeyIndex]) {
+    currentKeyIndex += 1
+
+    success ({
+      text: `Ти натиснув правильну клавішу!`, 
+      delay: 500,
+      addClass: 'success'
+    });
+    
+
+    if (currentKeyIndex === keys.length) {
+    success ({
+      text: `Ти виграв!`, 
+      delay: 500,
+      addClass: 'successWin'
+    });
+    return   
+  }
+
+  keyRef.textContent = keys[currentKeyIndex];
+
+  } else {
+    error ({
+      text: `Неправильна клавіша!`,
+      delay: 500,
+      addClass: 'error'
+      })
+  }
+
+});
+
+document.addEventListener('keypress', (e) => {
+  e.preventDefault();
+});
+
+btnRef.addEventListener ("click", () => {
+
+  currentKeyIndex = 0;
+  keyRef.textContent = keys[currentKeyIndex];
+
+
+  alert({
+    text: `Нова гра!`,
+    delay: 500,
+    addClass: 'alert'
+  })
+
+});
+
+
+
+/* =================================================== */
+
+
+import Chart from 'chart.js/auto';
+import { readUsedSize } from 'chart.js/helpers';
 
 
 const ctx = document.getElementById("sales-chart")
@@ -23,4 +93,4 @@ const config = {
   options: {}
 };
 
-const salesChart = new Chart(ctx,config);
+const salesChart = new Chart(ctx, config);
